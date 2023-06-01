@@ -1,0 +1,27 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.navbar {
+  padding: 1rem;
+  color: red;
+}
+
+.nav-item {
+  color: yellow;
+  padding: 1rem;
+}
+
+span {
+  color: greenyellow;
+  font-size: 2rem;
+}
+
+.notfound {
+  color: red;
+  font-size: 2rem;
+  font-weight: 900;
+}
