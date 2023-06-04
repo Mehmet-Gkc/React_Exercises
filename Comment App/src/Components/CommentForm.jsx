@@ -24,7 +24,7 @@ function CommentForm({addComment}) {
 
   return (
     <div className='form-container'>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <input 
             type="text"
             placeholder='Name'
@@ -36,7 +36,7 @@ function CommentForm({addComment}) {
             placeholder="Message" 
             value={text} 
             className='textarea-field' 
-            onChange={() => setText((e) => e.target.value)}>
+            onChange={(e) => setText(e.target.value)}>
         </textarea>
 
         {error && <p className='submit-warning'>{error}</p>}
