@@ -1,26 +1,38 @@
 import React, {useState} from 'react'
+import axios from 'axios';
 
 const initialForm = {fullname:"", phone_number:""}
 
 function Form({ addContacts,contacts }) {
     const [form, setForm] = useState(initialForm)
-    const [leer, setLeer] = useState(true)
+    const [message, setMessage] = useState()
 
     const onChangeInput = (e) => {
         setForm({...form, [e.target.name]: e.target.value})
     }
 
-    const onSubmit = (e) => {
+
+    const onSubmit = async (e) => {
         e.preventDefault()   
 
+        try {
+          const response = await axios.post("http://localhost:4004/phones", form)
+          console.log("res", response.data)
+        } catch (error) {
+          console.log(error)
+        }
+
+
         if(form.fullname === "" || form.phone_number === "") {
-            return setLeer(false)
+            return setMessage(false)
         }
         addContacts([...contacts, form])
         console.log(form)
 
         setForm(initialForm)
     }
+
+  
   return (
     <div className="form-container">
       <form onSubmit={onSubmit}>
@@ -31,7 +43,7 @@ function Form({ addContacts,contacts }) {
           <input type="text" name="phone_number" value={form.phone_number} placeholder="Phone number" className="form-input" onChange={onChangeInput}/>
         </div>
 
-        {!leer && <p className="error-message">Bitte Fullname und Phone Number hinzufügen</p>}
+        {message ? <p className="error-message">successfully added to the book</p> : <p className="error-message">Bitte Fullname und Phone Number hinzufügen</p>}
 
         <div className="form-group">
           <button className="form-button">Add</button>

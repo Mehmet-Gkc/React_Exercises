@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
-function WeatherInfo({weatherData}) {
-    console.log(weatherData)
+function WeatherInfo({ weatherData }) {
+  console.log(weatherData);
   return (
     <div>
       <h2>{weatherData.name}</h2>
@@ -9,7 +9,7 @@ function WeatherInfo({weatherData}) {
       <p>Luftfeuchtigkeit: {weatherData.main.humidity}</p>
       <p>Wetterbedingungen: {weatherData.weather[0].description}</p>
     </div>
-  )
+  );
 }
 
-export default WeatherInfo
+export default WeatherInfo;
